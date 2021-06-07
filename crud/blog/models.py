@@ -20,3 +20,10 @@ class Blog(models.Model):
 # 만약 __str__(self) 이하가 없다면 글쓴대로 제목이 나오지 않음. Blog object라고 뜸.
     def __str__(self):
         return self.title
+
+class Comment(models.Model):
+    def __str__(self):
+        return self.text
+
+    post_id = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
+    text = models.CharField(max_length=50)

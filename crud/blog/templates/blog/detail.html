@@ -11,14 +11,22 @@
         <hr class="divider" />
         <p>작성 일자 및 시간 : {{ post.pub_date }}</p>
         <p>글쓴이 : {{ post.writer }}</p>
-        <p>내용 : {{ post.body }}</p>
+        <p>내용 : {{ post.content }}</p>
         <!--edit.html로 이동할 것인데, 여러 post모델 중 특정 아이디만 받을 것.-->
         <a href="{% url 'edit' post.id %}">수정하기</a>
         <!--삭제 할것인데 여러 post모델 중 특정 아이디만 받아와 삭제.-->
         <a href="{% url 'delete' post.id %}">삭제하기</a>
-
-        
-
+        <br>
+        <br>
+        <br>
+        {% for comment in post.comments.all %}
+            <p>{{comment.text}}</p>
+        {% endfor %}
+        <form method="POST" action="{% url 'detail' post.id %}">
+            {% csrf_token %}
+            <p> {{ form.as_p }}</p>
+            <input type="submit" value="submit">
+        </form>
     </div>
 </section>
 {% endblock %}

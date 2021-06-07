@@ -1,7 +1,7 @@
 # 장고에서 제공하는 forms기능을 사용하기 위해 import함
 from django import forms
 # models.py에서 Blog모델을 쓸 것이기 때문에 가져온다!
-from .models import Blog
+from .models import Blog, Comment
 
 # postfor이라는 이름의 클래스 생성
 class PostForm(forms.ModelForm):
@@ -11,3 +11,8 @@ class PostForm(forms.ModelForm):
         model = Blog
         # Blog라는 모델의 값 중 제목, 작성자, 콘텐츠 항목을 입력받을 것임
         fields = ['title', 'writer', 'content']
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
