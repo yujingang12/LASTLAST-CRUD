@@ -9,7 +9,17 @@ base.html의 콘텐츠가 들어가는 부분과 같은 부분에 main.html의 �
 <section class="page-section" id="services">
     <div class="container px-4 px-lg-5">
         <h2 class="text-center mt-0">READ</h2>
-        
+        <!--여기에 해시태그 검색기능 넣겠습니다!!!-->
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Hashtag 검색
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            {% for hashtag in hashtags.all %}
+              <li><a class="dropdown-item" href="{% url 'search' hashtag.id %}">{{ hashtag.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
         {% for posts in posts.all %}
         <!--제목을 누르면 해당 id값을 가진 게시믈로 이동, 여기서 id는 고유번호!
         해당 게시물의 제목과, 작성자, 날짜와 시간을 가져올 것임. -->

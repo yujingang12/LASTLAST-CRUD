@@ -16,5 +16,8 @@ urlpatterns = [
     path('edit/<str:id>/', blog.views.edit, name='edit'),
     #주소창 끝에 /delete를 쳐서 접속할 수 있음, 특정 게시물을 가져오는 것이기 때문에 id를 지정해줌,blog폴더 안에 view.py안에 delete이라는 함수를 적용시킨다. 이름은 delete으로 할 것임.
     path('delete/<str:id>/', blog.views.delete, name='delete'),
-  
+    #해시테그 url추가
+    path('blog/hashtag/', blog.views.hashtagform, name='hashtag'),
+    
+    path('blog/<int:hashtag_id>/search/', blog.views.search, name='search'),
 ]

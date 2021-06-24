@@ -12,6 +12,11 @@
         <p>작성 일자 및 시간 : {{ post.pub_date }}</p>
         <p>글쓴이 : {{ post.writer }}</p>
         <p>내용 : {{ post.content }}</p>
+        <!--여기에 해시태그 넣을게영!!!!-->
+        {% for hashtag in post.hashtags.all %}
+            <span>{{ hashtag.name }}</span>
+        {% endfor %}
+        <br>
         <!--edit.html로 이동할 것인데, 여러 post모델 중 특정 아이디만 받을 것.-->
         <a href="{% url 'edit' post.id %}">수정하기</a>
         <!--삭제 할것인데 여러 post모델 중 특정 아이디만 받아와 삭제.-->

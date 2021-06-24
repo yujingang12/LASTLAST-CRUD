@@ -15,6 +15,7 @@ class Blog(models.Model):
     pub_date = models.DateField('date published')
     writer = models.CharField(max_length=15, default='닉네임을 입력해주세요')
     content = models.TextField()
+    hashtags = models.ManyToManyField('Hashtag', blank=True)
 
 # def로 함수를 선언하고~ 모델 클래스의 객체를 그대로(self) 문자열(str)로 반환한다. 
 # 만약 __str__(self) 이하가 없다면 글쓴대로 제목이 나오지 않음. Blog object라고 뜸.
@@ -27,3 +28,10 @@ class Comment(models.Model):
 
     post_id = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
     text = models.CharField(max_length=50)
+
+class Hashtag(models.Model):
+    name = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.name
+
