@@ -10,7 +10,7 @@ class PostForm(forms.ModelForm):
         # Blog라는 모델을 참고하여form을 만들었음!
         model = Blog
         # Blog라는 모델의 값 중 제목, 작성자, 콘텐츠 항목을 입력받을 것임
-        fields = ['title', 'writer', 'content', 'hashtags']
+        fields = ['title', 'writer', 'content', 'hashtags', 'image']
 
 class CommentForm(forms.ModelForm):
     class Meta:

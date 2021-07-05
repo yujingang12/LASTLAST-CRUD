@@ -16,6 +16,9 @@ class Blog(models.Model):
     writer = models.CharField(max_length=15, default='닉네임을 입력해주세요')
     content = models.TextField()
     hashtags = models.ManyToManyField('Hashtag', blank=True)
+    #이곳에 미디어 하겠슴다!
+    image = models.ImageField(upload_to='images/', blank=True)
+    
 
 # def로 함수를 선언하고~ 모델 클래스의 객체를 그대로(self) 문자열(str)로 반환한다. 
 # 만약 __str__(self) 이하가 없다면 글쓴대로 제목이 나오지 않음. Blog object라고 뜸.

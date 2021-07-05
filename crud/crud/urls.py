@@ -1,7 +1,14 @@
+from django import urls
 from django.contrib import admin
 from django.urls import path
+from django.urls.conf import include
 # blog안에 view를 임포트 해준다.
 import blog.views
+#이곳에 미디어 하겠습니다!
+from django.conf import settings
+from django.conf.urls.static import static
+#이곳에 회원가입!
+from account import views
 
 urlpatterns = [
     # 주소창 끝에 /admin을 쳐서 접속할 수 있음. 
@@ -18,6 +25,8 @@ urlpatterns = [
     path('delete/<str:id>/', blog.views.delete, name='delete'),
     #해시테그 url추가
     path('blog/hashtag/', blog.views.hashtagform, name='hashtag'),
-    
+    #검색기능
     path('blog/<int:hashtag_id>/search/', blog.views.search, name='search'),
-]
+    #로그인!!!
+    path('account/', include('account.urls')),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

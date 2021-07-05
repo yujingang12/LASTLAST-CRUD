@@ -32,9 +32,10 @@ def create(request, blog=None):
     #view에서 다시 한번 method를 확인 한뒤
     if request.method == 'POST':
         # form의 입력값 유효성 검증을 시작
-        form = PostForm(request.POST, instance=blog)
+        #request.files (미디어) 추가
+        form = PostForm(request.POST, request.FILES, instance=blog )
         #우리가 post형식으로 요청받은 form이 forms.py에서 작성받기로 한 정보를 다 받았는 지 유효성검사!
-        if form.is_valid():
+        if form.is_valid ():
            blog = form.save(commit=False)
            blog.pub_date = timezone.datetime.now()
            blog.save()
@@ -78,7 +79,7 @@ def delete(request, id):
     #삭제를 한 다음에 다시 main페이지를 띄운다.
     return redirect('main')
 
-#댓글함수
+#디테일
 def detail(request, id):
     blog = get_object_or_404(Blog, id=id)
     if request.method == "POST":

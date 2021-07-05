@@ -12,6 +12,12 @@
         <p>작성 일자 및 시간 : {{ post.pub_date }}</p>
         <p>글쓴이 : {{ post.writer }}</p>
         <p>내용 : {{ post.content }}</p>
+
+        <!--미디어 사진 확인!!!! -->
+        {% if post.image %}
+            <img src="{{ post.image.url }}" width="250" height="250" alt="Card image cap">
+        {% endif %}
+        <br>
         <!--여기에 해시태그 넣을게영!!!!-->
         {% for hashtag in post.hashtags.all %}
             <span>{{ hashtag.name }}</span>

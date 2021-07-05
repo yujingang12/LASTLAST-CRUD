@@ -15,7 +15,8 @@
                 action은 정보를 어디로 보내줄 것인지 설정하는 것이지만 form 사용시 장고가 html과 연결되어 있는 함수로 알아서 보내줌.
             따라서 action을 작성할 필요는 없다! 
             post방식을 통해 데이터를 보내줄 것임. post 방식은 데이터를 처리하여 보내줌. -->
-                <form method="POST">
+            <!--포스트 옆에 미디어폼 전송 추가함!-->
+                <form method="POST" enctype="multipart/form-data">
                     <!--공격으로부터 보호!-->
                     {% csrf_token %}
                     <table>
