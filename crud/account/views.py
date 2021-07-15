@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 #회원가입 여기에 하겠슴다!
 from django.contrib import auth
-from user.forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
